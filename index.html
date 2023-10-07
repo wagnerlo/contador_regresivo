@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Contador</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header>
+        <div class="hcont">
+            <div class="logo">
+                <img src="imgs/logo-sochi-color.png" alt="Logo Sochi">
+            </div>
+
+            <div class="logoSport">
+               <img src="imgs/logo-claro-sports.png" alt="logo Claro Sports">
+            </div>
+
+        </div>
+        
+    </header>
+
+    <div class="container">
+        <div>
+            <p class="title">
+                FALTAN
+            </p>
+        </div>
+        <div class="cuenta">
+            <div class="contadores">
+                <p id="dia" class="cont">
+                    
+                </p>
+                <p class="sub">
+                    DÍAS
+                </p>
+            </div>
+            <div class="contadores">
+                <p id="hora" class="cont">
+                    
+                </p>
+                <p class="sub">
+                    HRS
+                </p>
+            </div>
+            <div class="contadores">
+                <p id="min" class="cont">
+                    
+                </p>
+                <p class="sub">
+                    MIN
+                </p>
+            </div>
+            <div class="contadores">
+                <p id="seg" class="cont">
+                    
+                </p>
+                <p class="sub">
+                    SEG
+                </p>
+            </div>
+        </div>
+
+        <div class="vidstyles">
+            <div id="contenedoriframe" class="contiframe">
+                
+            </div>
+        </div>
+
+    </div>
+
+    <div class="buttons">
+        <div>
+            <p  class="title02">
+                CLARO SPORTS EN SOCHI 2014
+            </p>
+        </div>
+
+        <div class="cajas">
+            <div class="bplay">
+                <div id="contimg">
+                    <img src="imgs/team-latam.png" alt="Imagen Team Latam" onclick="vidaction('pu')" id="video1">
+                </div>
+                <div id="txtvid" class="btaction">
+                    <p>
+                    Los Deportistas latinoamericanos que participan en Sochi 2014
+                    </p>
+                </div>
+                <p>
+                    TEAM LATAM
+                </p>
+            </div>
+            <div class="bplay">
+                <div id="contimg02">
+                    <img src="imgs/travel-meets-fashion.png" alt="imagen Travel meets fashion" onclick="vidaction('pd')">
+                </div>
+                <div id="txtvid02" class="btaction">
+                    <p>
+                    Los Deportistas latinoamericanos que participan en Sochi 2014
+                    </p>
+                </div>
+                <p>
+                    TRAVEL MEETS FASHION
+                </p>
+            </div>
+            <div class="bplay">
+                <div id="contimg03">
+                    <img src="imgs/velocidad-riesgo.png" alt="Imagen velocidad y riesgo" onclick="vidaction('pt')">
+                </div>
+                <div id="txtvid03" class="btaction">
+                    <p>
+                    Los Deportistas latinoamericanos que participan en Sochi 2014
+                    </p>
+                </div>
+                <p>
+                    VELOCIDAD Y RIESGO
+                </p>
+            </div>
+            <div class="bplay">
+                <div id="contimg04">
+                    <img src="imgs/experiencia.png" alt="Imagen experiencia" onclick="vidaction('pc')">
+                </div>
+                <div id="txtvid04" class="btaction">
+                    <p>
+                    Los Deportistas latinoamericanos que participan en Sochi 2014
+                    </p>
+                </div>
+                <p>
+                    EXPERIENCIA MULTIMEDIA
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="fcont">
+            <div class="center">
+                <p>
+                    <a href="#">
+                        Aviso de privacidad / Contacto
+                    </a>
+                </p>
+            </div>
+            <div class="logof center">
+                <img src="imgs/logo-sochi-color.png" alt="Logo Sochi">
+            </div>
+            <div class="center">
+                <ul>
+                    <li class="mbkg">
+                        <a href="#">
+                            <img src="imgs/mobli-icon.png" alt="mobil-icon" class="redes">
+                        </a>
+                    </li>
+                    <li class="fbkg">
+                        <a href="https://facebook.com" target="_blank">   
+                            <img src="imgs/facebook.png" alt="logo twitter" class="redes">
+                        </a>
+                    </li>
+                    <li class="tbkg">
+                        <a href="https://twitter.com/home" target="_blank">
+                            <img src="imgs/twitter.png" alt="Logo twitter" class="redes">  
+                        </a>
+                    </li>
+                    <li class="ybkg">
+                        <a href="https://www.youtube.com/" target="_blank">
+                            <img src="imgs/youtube.png" alt="Logo youtube" class="redes">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded',()=>{
+        const fechaFinal = new Date('10/06/2023 06:20 PM');
+
+        const dia = document.getElementById("dia");
+
+        const hora = document.getElementById("hora");
+
+        const min = document.getElementById("min");
+
+        const seg = document.getElementById("seg");
+
+        const milseg = 1000;
+
+        const milmin = milseg*60;
+
+        const milhora = milmin*60;
+
+        const mildia = milhora*24;
+
+
+        function conteo(){
+            let FechaActual = new Date();
+
+            var timer = setInterval( conteo, milseg);
+
+            var tiempoRestante = fechaFinal - FechaActual;
+
+            var diaremaining = Math.floor(tiempoRestante / mildia);
+
+            var horaremaining = Math.floor((tiempoRestante % mildia) / milhora);
+
+            var minremaining = Math.floor((tiempoRestante % milhora) / milmin);
+
+            var segremaining = Math.floor((tiempoRestante % milmin) / milseg);
+
+            
+            if (tiempoRestante < 0) { 
+
+                dia.innerHTML = "00";
+
+                hora.innerHTML = "00";
+
+                min.innerHTML = "00";
+
+                seg.innerHTML = "00";
+
+                clearInterval(timer);
+
+            }
+
+                else { 
+
+                dia.innerHTML = checador (diaremaining);
+
+                hora.innerHTML = checador (horaremaining);
+
+                min.innerHTML = checador (minremaining);
+
+                seg.innerHTML = checador (segremaining);
+ }
+        }
+
+        conteo();
+
+        function checador(equis){
+            // return equis > 9 ? equis : '0' + equis;
+
+            if (equis > 9) {
+                return equis
+            }
+
+            else {
+                return '0' + equis
+            }
+        }
+    });
+</script>
+
+<script>
+
+    function vidaction(daleplay){
+        if (daleplay === 'pu'){
+            removeIframe();
+
+            document.getElementById("contimg").style.display = "none";
+
+            document.getElementById("txtvid").style.display = "block";
+
+            document.getElementById("contimg02").style.display = "block";
+
+            document.getElementById("txtvid02").style.display = "none";
+
+            document.getElementById("contimg03").style.display = "block";
+
+            document.getElementById("txtvid03").style.display = "none";
+
+            document.getElementById("contimg04").style.display = "block";
+
+            document.getElementById("txtvid04").style.display = "none";
+
+
+            document.getElementById("contenedoriframe").innerHTML = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/WSwkvZVvsj0?si=Edo6Km6zCnhtXqgw\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>";
+
+        }else if (daleplay === 'pd'){
+            removeIframe();
+
+            document.getElementById("contimg").style.display = "block";
+
+            document.getElementById("txtvid").style.display = "none";
+
+            document.getElementById("contimg02").style.display = "none";
+
+            document.getElementById("txtvid02").style.display = "block";
+
+            document.getElementById("contimg03").style.display = "block";
+
+            document.getElementById("txtvid03").style.display = "none";
+
+            document.getElementById("contimg04").style.display = "block";
+
+            document.getElementById("txtvid04").style.display = "none";
+
+            document.getElementById("contenedoriframe").innerHTML = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/pjdPV9TyS-k?si=hsIJ3P7km2fOKlRf\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>";
+
+        } else if (daleplay === 'pt'){
+
+            removeIframe();
+
+            document.getElementById("contimg").style.display = "block";
+
+            document.getElementById("txtvid").style.display = "none";
+
+            document.getElementById("contimg02").style.display = "block";
+
+            document.getElementById("txtvid02").style.display = "none";
+
+            document.getElementById("contimg03").style.display = "none";
+
+            document.getElementById("txtvid03").style.display = "block";
+
+            document.getElementById("contimg04").style.display = "block";
+
+            document.getElementById("txtvid04").style.display = "none";
+
+            document.getElementById("contenedoriframe").innerHTML = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/8s842l73NM8?si=aK8a0cgULBUeC91F\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>";
+
+        } else if (daleplay === 'pc'){
+
+            removeIframe();
+
+            document.getElementById("contimg").style.display = "block";
+
+            document.getElementById("txtvid").style.display = "none";
+
+            document.getElementById("contimg02").style.display = "block";
+
+            document.getElementById("txtvid02").style.display = "none";
+
+            document.getElementById("contimg03").style.display = "block";
+
+            document.getElementById("txtvid03").style.display = "none";
+
+            document.getElementById("contimg04").style.display = "none";
+
+            document.getElementById("txtvid04").style.display = "block";
+
+            document.getElementById("contenedoriframe").innerHTML = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/yCHuqMMRO2E?si=zBjzo2NHq72IPoXu\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>";
+        }
+    }
+
+
+    function removeIframe (){
+        var iframes = document.querySelectorAll('iframe');
+            for (var i = 0; i < iframes.length; i++) {
+                iframes[i]. parentNode.removeChild(iframes[i]);
+            }
+    }
+
+
+    document.addEventListener('DOMContentLoaded', function(){
+        document.getElementById("video1").click();
+    });
+
+
+
+
+
+    // const contvid = document.getElementById("videosuno");
+    // const v1 = "https://www.youtube.com/embed/iGnk3eqiuuU?si=6YzUIyKNfghO9ooe"
+    // const v2 = "https://www.youtube.com/embed/K0xFPQ2CX5E?si=UWVMMbDAIjIKV1yN"
+    // const v3 = "https://www.youtube.com/embed/qSnlTld85yc?si=b-bYlRm8Hc4dVLkJ"
+    // const v4 = "https://www.youtube.com/embed/VdphvuyaV_I?si=AJ82xJk0ueCGNdcW"
+
+    // function vidaction(daleplay){
+
+    //     if (daleplay === 'pu'){
+    //         contvid.src = v1;
+    //         console.log("playvid1")
+    //     }       else if (daleplay === 'pd'){
+    //         contvid.scr = v2;
+    //         console.log("playvid2")
+    //     }       else if (daleplay === 'pt'){
+    //         contvid.scr = v3;
+    //         console.log("playvid3")
+    //     }       else if (daleplay === 'pc'){
+    //         contvid.scr =v4;
+    //         console.log("playvid4")
+    // //     }
+    // }
+
+</script>
+
+
+
+
+</body>
+
+
+
+
+</html>
